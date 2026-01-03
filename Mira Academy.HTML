@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mira Academy - Excellence in Education</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a56db;
+            --primary-light: #e1effe;
+            --secondary: #059669;
+            --dark: #111827;
+            --light: #f9fafb;
+            --gray: #6b7280;
+            --border: #e5e7eb;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            background-color: var(--light);
+        }
+        .lang-ar {
+            font-family: 'Cairo', sans-serif;
+            direction: rtl;
+        }
+        .lang-fr, .lang-en {
+            direction: ltr;
+        }
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        /* Header & Navigation */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        .logo i {
+            margin-right: 10px;
+            color: var(--secondary);
+        }
+        .lang-switcher {
+            display: flex;
+            gap: 5px;
+        }
+        .lang-btn {
+            padding: 8px 15px;
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        .lang-btn.active, .lang-btn:hover {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        nav li {
+            margin-left: 30px;
+        }
+        nav a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 1rem;
+        }
+        nav a:hover {
+            color: var(--primary);
+        }
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--dark);
+        }
+        /* Hero Section */
+        .hero {
+            padding: 160px 0 80px 0;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e1effe 100%);
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+            line-height: 1.2;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(26, 86, 219, 0.2);
+        }
+        .cta-button:hover {
+            background-color: #1e40af;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(26, 86, 219, 0.3);
+        }
+        /* Content Sections */
+        section {
+            padding: 80px 0;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 50px;
+            color: var(--dark);
+            position: relative;
+        }
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 4px;
+            background-color: var(--secondary);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        .about-text {
+            flex: 1;
+        }
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        .about-image img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s;
+        }
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+        /* Gallery & Media Sections */
+        .gallery-section {
+            background-color: #f8fafc;
+        }
+        .gallery-intro {
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--gray);
+            max-width: 800px;
+            margin: 0 auto 50px;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            background-color: white;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        .gallery-item .video-container {
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+        .gallery-item-content {
+            padding: 20px;
+        }
+        .gallery-item-content h4 {
+            margin-bottom: 10px;
+            color: var(--dark);
+            font-size: 1.2rem;
+        }
+        .gallery-item-content p {
+            color: var(--gray);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        /* Subject Categories */
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        .subject-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s;
+            border-top: 4px solid var(--primary);
+        }
+        .subject-card:hover {
+            transform: translateY(-5px);
+        }
+        .subject-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        .subject-card h4 {
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        /* Contact Info */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .contact-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s;
+            border-top: 4px solid var(--primary);
+        }
+        .contact-card:hover {
+            transform: translateY(-10px);
+        }
+        .contact-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        .contact-card h3 {
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        .contact-card a, .contact-card p {
+            color: var(--gray);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .contact-card a:hover {
+            color: var(--primary);
+        }
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px 0;
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+        }
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            color: white;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 3px;
+            background-color: var(--secondary);
+            bottom: 0;
+            left: 0;
+        }
+        .footer-links {
+            list-style: none;
+        }
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        .footer-links a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+        .social-icons a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #9ca3af;
+            font-size: 0.9rem;
+        }
+        /* Language-specific content */
+        .language-content {
+            display: none;
+        }
+        .language-content.active {
+            display: block;
+        }
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05);
+            }
+            nav ul.active {
+                display: flex;
+            }
+            nav li {
+                margin: 15px 0;
+                margin-left: 0;
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
+            .header-container {
+                flex-wrap: wrap;
+            }
+            .hero {
+                padding: 140px 0 60px 0;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            section {
+                padding: 60px 0;
+            }
+            .gallery-item .video-container {
+                height: 350px;
+            }
+        }
+        @media (max-width: 480px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            .gallery-item .video-container {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo"><i class="fas fa-graduation-cap"></i> Mira Academy</a>
+            
+            <div class="lang-switcher">
+                <button class="lang-btn active" data-lang="ar">العربية</button>
+                <button class="lang-btn" data-lang="fr">Français</button>
+                <button class="lang-btn" data-lang="en">English</button>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav>
+                <ul id="mainNav">
+                    <li><a href="#home">الرئيسية</a></li>
+                    <li><a href="#about">من نحن</a></li>
+                    <li><a href="#gallery">المعرض</a></li>
+                    <li><a href="#subjects">المواد</a></li>
+                    <li><a href="#contact">اتصل بنا</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="container">
+                <!-- Arabic Hero -->
+                <div class="language-content active lang-ar" id="hero-ar">
+                    <h1>أكاديمية ميرا: صُنع مستقبل التميز</h1>
+                    <p>نحن مركز تعليمي رائد في الجديدة، نقدم دورات دعم دراسي شاملة وبرامج تأهيلية لجميع المستويات. مهمتنا هي تمكين الطلاب وتحقيق إمكاناتهم الكاملة.</p>
+                    <a href="#contact" class="cta-button">تواصل معنا اليوم</a>
+                </div>
+                <!-- French Hero -->
+                <div class="language-content lang-fr" id="hero-fr">
+                    <h1>Mira Academy : Forger l'Excellence de Demain</h1>
+                    <p>Centre éducatif leader à El Jadida, nous offrons des cours de soutien scolaire complets et des programmes de préparation pour tous les niveaux. Notre mission est d'autonomiser les étudiants et de libérer leur plein potentiel.</p>
+                    <a href="#contact" class="cta-button">Contactez-nous aujourd'hui</a>
+                </div>
+                <!-- English Hero -->
+                <div class="language-content lang-en" id="hero-en">
+                    <h1>Mira Academy: Shaping Futures of Excellence</h1>
+                    <p>A leading educational center in El Jadida, we provide comprehensive tutoring courses and preparatory programs for all levels. Our mission is to empower students and unlock their full potential.</p>
+                    <a href="#contact" class="cta-button">Contact Us Today</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about">
+            <div class="container">
+                <!-- Arabic About -->
+                <div class="language-content active lang-ar" id="about-ar">
+                    <h2 class="section-title">من نحن</h2>
+                    <div class="about-content">
+                        <div class="about-text">
+                            <h3>مرحبا بكم في أكاديمية ميرا</h3>
+                            <p>تقع أكاديمية ميرا في قلب حي السعادة، بالقرب من مسجد الحكمة ومدرسة عبد المومن الموحدي. نحن مؤسسة تعليمية ملتزمة بتقديم تعليم عالي الجودة في جو داعم ومحفز.</p>
+                            <p>نحن نؤمن بأن كل طالب فريد من نوعه. من خلال دروسنا المصممة خصيصًا ونهجنا الشخصي، نساعد الطلاب على بناء الثقة، وتعزيز المعرفة، وتحقيق النجاح الأكاديمي.</p>
+                            <p>فريقنا من المربين ذوي الخبرة متخصص في جميع المواد الرئيسية، مما يضمن حصول كل طالب على الدعم الذي يحتاجه للتفوق.</p>
+                        </div>
+                        <div class="about-image">
+                            <!-- REPLACE THIS IMAGE URL WITH YOUR ACTUAL IMAGE -->
+                            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="صورة فصول أكاديمية ميرا">
+                        </div>
+                    </div>
+                </div>
+                <!-- French About -->
+                <div class="language-content lang-fr" id="about-fr">
+                    <h2 class="section-title">À propos de nous</h2>
+                    <div class="about-content">
+                        <div class="about-text">
+                            <h3>Bienvenue à Mira Academy</h3>
+                            <p>Située au cœur du quartier Saada, près de la Mosquée Al Hikma et de l'école Abdelmoumen Al Mwahidi, Mira Academy est une institution éducative dédiée à fournir un enseignement de haute qualité dans un environnement stimulant et favorable.</p>
+                            <p>Nous croyons que chaque élève est unique. Grâce à nos leçons personnalisées et notre approche individualisée, nous aidons les étudiants à bâtir leur confiance, renforcer leurs connaissances et réussir académiquement.</p>
+                            <p>Notre équipe d'éducateurs expérimentés est spécialisée dans toutes les matières principales, garantissant à chaque élève le soutien nécessaire pour exceller.</p>
+                        </div>
+                        <div class="about-image">
+                            <!-- REPLACE THIS IMAGE URL WITH YOUR ACTUAL IMAGE -->
+                            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Image des classes de Mira Academy">
+                        </div>
+                    </div>
+                </div>
+                <!-- English About -->
+                <div class="language-content lang-en" id="about-en">
+                    <h2 class="section-title">About Us</h2>
+                    <div class="about-content">
+                        <div class="about-text">
+                            <h3>Welcome to Mira Academy</h3>
+                            <p>Located in the heart of the Saada neighborhood, near Al Hikma Mosque and Abdelmoumen Al Mwahidi School, Mira Academy is an educational institution committed to delivering high-quality education in a supportive and stimulating environment.</p>
+                            <p>We believe every student is unique. Through our tailored lessons and personalized approach, we help students build confidence, strengthen knowledge, and achieve academic success.</p>
+                            <p>Our team of experienced educators specializes in all core subjects, ensuring every student receives the support needed to excel.</p>
+                        </div>
+                        <div class="about-image">
+                            <!-- REPLACE THIS IMAGE URL WITH YOUR ACTUAL IMAGE -->
+                            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Mira Academy classroom image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section class="gallery-section" id="gallery">
+            <div class="container">
+                <!-- Arabic Gallery -->
+                <div class="language-content active lang-ar" id="gallery-ar">
+                    <h2 class="section-title">معرض الفيديو</h2>
+                    <p class="gallery-intro">شاهد مقاطع فيديو من فصولنا الدراسية وورش العمل والأنشطة التعليمية في أكاديمية ميرا. استمتع بمشاهدة طلابنا وهم يتعلمون ويتفوقون.</p>
+                    
+                    <div class="gallery-grid">
+                        <!-- Video 1 -->
+                        <div class="gallery-item">
+                            <div class="video-container">
+                                <!-- YOUR FACEBOOK VIDEO 1 -->
+                                <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1377052237473820%2F&show_text=false&width=267&t=0" width="100%" height="100%" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+                            </div>
+                            <div class="gallery-item-content">
+                                <h4>جلسة تعليمية تفاعلية</h4>
+                                <p>طلابنا يشاركون بنشاط في فصل دراسي تفاعلي، يظهرون حماسهم للتعلم والاستكشاف.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Video 2 -->
+                        <div class="gallery-item">
+                            <div class="video-container">
+                                <!-- YOUR FACEBOOK VIDEO 2 -->
+                                <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1195500502448753%2F&show_text=false&width=267&t=0" width="100%" height="100%" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+                            </div>
+                            <div class="gallery-item-content">
+                                <h4>ورشة عمل إبداعية</h4>
+                                <p>طلابنا يطورون مهاراتهم الإبداعية في ورشة العمل الخاصة بنا، مما يعزز التفكير النقدي والإبداعي.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Video 3 -->
+                        <div class="gallery-item">
+                            <div class="video-container">
+                                <!-- YOUR FACEBOOK VIDEO 3 -->
+                                <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Fmiraacademia%2Fvideos%2F3001571636666280%2F&show_text=false&width=267&t=0" width="100%" height="100%" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+                            </div>
+                            <div class="gallery-item-content">
+                                <h4>تجارب علمية عملية</h4>
+                                <p>طلابنا يجرون تجارب عملية في مختبر العلوم، مما يطبق النظرية على أرض الواقع.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Video 4 -->
+                        <div class="gallery-item">
+                            <div class="video-container">
+                                <!-- YOUR FACEBOOK VIDEO 4 -->
+                                <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Fmiraacademia%2Fvideos%2F455269354134380%2F&show_text=false&width=267&t=0" width="100%" height="100%" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+                            </div>
+                            <div class="gallery-item-content">
+                                <h4>مناقشة جماعية</h4>
+                                <p>طلابنا يشاركون في مناقشات جماعية نشطة، مما يعزز مهارات التواصل والعمل الجماعي.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Image 1 (Placeholder - Replace with your image) -->
+                        <div class="gallery-item">
+                            <!-- REPLACE THIS IMAGE URL WITH YOUR ACTUAL IMAGE -->
+                            <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="رياضيات وعلوم">
+                            <div class="gallery-item-content">
+                                <h4>الرياضيات والعلوم</h4>
+                                <p>صورة تظهر معادلات وقياسات رياضية وعلمية تدرس في أكاديمية ميرا.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Image 2 (Placeholder - Replace with your image) -->
+                        <div class="gallery-item">
+                            <!-- REPLACE THIS IMAGE URL WITH YOUR ACTUAL IMAGE -->
+                            <img src="https://images.unsplash.com/photo-1524178234883-043d5c3f3cf4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="اللغات العالمية">
+                            <div class="gallery-item-content">
+                                <h4>اللغات العالمية</h4>
+                                <p>تعلم اللغات المختلفة بما في ذلك العربية، الفرنسية، الإنجليزية، والإسبانية.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- French Gallery -->
+                <div class="language-content lang-fr" id="gallery-fr">
+                    <h2 class="section-title">Galerie Vidéo</h2>
+                    <p class="gallery-intro">Regardez des vidéos de nos classes, ateliers et activités éducatives à Mira Academy. Voyez nos étudiants apprendre et exceller.</p>
+                    
+                    <div class="gallery-grid">
+                        <!-- Video 1 -->
+                        <div class="gallery-item">
+                            <div class="video-container">
+                                <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1377052237473820%2F&show_text=false&width=267&t=0" width="100%" height="100%" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+                            </div>
+                            <div class="gallery-item-content">
+                                <h4>Session éducative interactive</h4>
+                                <p>Nos étudiants participant activement à une classe interactive, montrant leur enthousiasme pour l'apprentissage et l'exploration.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Video 2 -->
+                        <div class="gallery-item">
+                            <div class="video-container">
+                                <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1195500502448753%2F&show_text=false&width=267&t=0" width="100%" height="100%" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+                            </div>
+                            <div class="gallery-item-content">
+                                <h4>Atelier créatif</h4>
+                                <p>Nos étudiants développent leurs compétences créatives dans notre atelier, favorisant la pensée critique et créative.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Video 3 -->
+                        <div class="gallery-item">
+                            <div class="video-container">
+                                <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Fmiraacademia%2Fvideos%2F3001571636666280%2F&show_text=false&width=267&t=0" width="100%" height="100%" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+                            </div>
+                            <div class="gallery-item-content">
+                                <h4>Expériences scientifiques pratiques</h4>
+                                <p>Nos étudiants réalisent des expériences pratiques en laboratoire, appliquant la théorie à la réalité.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Video 4 -->
+                        <div class="gallery-item">
+                            <div class="video-container">
+                                <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Fmiraacademia%2Fvideos%2F455269354134380%2F&show_text=false&width=267&t=0" width="100%" height="100%" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+                            </div>
+                            <div class="gallery-item-content">
+                                <h4>Discussion de groupe</h4>
+                                <p>Nos étudiants participent à des discussions de groupe actives, renforçant les compétences en communication et en travail d'équipe.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Image 1 -->
+                        <div class="gallery-item">
+                            <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Mathématiques et Sciences">
+                            <div class="gallery-item-content">
+                                <h4>Mathématiques et Sciences</h4>
+                                <p>Image montrant des équations et mesures mathématiques et scientifiques enseignées à Mira Academy.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Image 2 -->
+                        <div class="gallery-item">
+                            <img src="https://images.unsplash.com/photo-1524178234883-043d5c3f3cf4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Langues mondiales">
+                            <div class="gallery-item-content">
+                                <h4>Langues Mondiales</h4>
+                                <p>Apprentissage de différentes langues dont l'Arabe, le Français, l'Anglais et l'Espagnol.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- English Gallery -->
+                <div class="language-content lang-en" id="gallery-en">
+                    <h2 class="section-title">Video Gallery</h2>
+                    <p class="gallery-intro">Watch videos from our classes, workshops, and educational activities at Mira Academy. See our students learning and excelling.</p>
+                    
+                    <div class="gallery-grid">
+                        <!-- Video 1 -->
+                        <div class="gallery-item">
+                            <div class="video-container">
+                                <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1377052237473820%2F&show_text=false&width=267&t=0" width="100%" height="100%" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+                            </div>
+                            <div class="gallery-item-content">
+                                <h4>Interactive Learning Session</h4>
+                                <p>Our students actively participating in an interactive classroom, showing their enthusiasm for learning and exploration.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Video 2 -->
+                        <div class="gallery-item">
+                            <div class="video-container">
+                                <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1195500502448753%2F&show_text=false&width=267&t=0" width="100%" height="100%" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+                            </div>
+                            <div class="gallery-item-content">
+                                <h4>Creative Workshop</h4>
+                                <p>Our students developing their creative skills in our workshop, fostering critical and creative thinking.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Video 3 -->
+                        <div class="gallery-item">
+                            <div class="video-container">
+                                <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Fmiraacademia%2Fvideos%2F3001571636666280%2F&show_text=false&width=267&t=0" width="100%" height="100%" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+                            </div>
+                            <div class="gallery-item-content">
+                                <h4>Hands-on Science Experiments</h4>
+                                <p>Our students conducting practical experiments in the lab, applying theory to reality.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Video 4 -->
+                        <div class="gallery-item">
+                            <div class="video-container">
+                                <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Fmiraacademia%2Fvideos%2F455269354134380%2F&show_text=false&width=267&t=0" width="100%" height="100%" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+                            </div>
+                            <div class="gallery-item-content">
+                                <h4>Group Discussion</h4>
+                                <p>Our students participating in active group discussions, enhancing communication and teamwork skills.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Image 1 -->
+                        <div class="gallery-item">
+                            <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Mathematics and Sciences">
+                            <div class="gallery-item-content">
+                                <h4>Mathematics & Sciences</h4>
+                                <p>Image showing mathematical and scientific equations and measurements taught at Mira Academy.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Image 2 -->
+                        <div class="gallery-item">
+                            <img src="https://images.unsplash.com/photo-1524178234883-043d5c3f3cf4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="World Languages">
+                            <div class="gallery-item-content">
+                                <h4>World Languages</h4>
+                                <p>Learning different languages including Arabic, French, English, and Spanish.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Subjects Section -->
+        <section id="subjects">
+            <div class="container">
+                <!-- Arabic Subjects -->
+                <div class="language-content active lang-ar" id="subjects-ar">
+                    <h2 class="section-title">المواد الدراسية</h2>
+                    <p style="text-align: center; margin-bottom: 40px; font-size: 1.1rem; color: var(--gray);">نقدم دروسًا شاملة في جميع المواد الرئيسية لجميع المستويات التعليمية.</p>
+                    
+                    <div class="subjects-grid">
+                        <div class="subject-card">
+                            <i class="fas fa-calculator"></i>
+                            <h4>الرياضيات</h4>
+                            <p>من الحساب الأساسي إلى التفاضل والتكامل المتقدم</p>
+                        </div>
+                        <div class="subject-card">
+                            <i class="fas fa-flask"></i>
+                            <h4>العلوم</h4>
+                            <p>فيزياء، كيمياء، أحياء، وعلوم الأرض</p>
+                        </div>
+                        <div class="subject-card">
+                            <i class="fas fa-language"></i>
+                            <h4>اللغات</h4>
+                            <p>عربية، فرنسية، إنجليزية، إسبانية، ألمانية</p>
+                        </div>
+                        <div class="subject-card">
+                            <i class="fas fa-laptop-code"></i>
+                            <h4>التكنولوجيا</h4>
+                            <p>معلوماتية، برمجة، ومهارات رقمية</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- French Subjects -->
+                <div class="language-content lang-fr" id="subjects-fr">
+                    <h2 class="section-title">Matières Scolaires</h2>
+                    <p style="text-align: center; margin-bottom: 40px; font-size: 1.1rem; color: var(--gray);">Nous offrons des cours complets dans toutes les matières principales pour tous les niveaux éducatifs.</p>
+                    
+                    <div class="subjects-grid">
+                        <div class="subject-card">
+                            <i class="fas fa-calculator"></i>
+                            <h4>Mathématiques</h4>
+                            <p>De l'arithmétique de base au calcul avancé</p>
+                        </div>
+                        <div class="subject-card">
+                            <i class="fas fa-flask"></i>
+                            <h4>Sciences</h4>
+                            <p>Physique, Chimie, Biologie, Sciences de la Terre</p>
+                        </div>
+                        <div class="subject-card">
+                            <i class="fas fa-language"></i>
+                            <h4>Langues</h4>
+                            <p>Arabe, Français, Anglais, Espagnol, Allemand</p>
+                        </div>
+                        <div class="subject-card">
+                            <i class="fas fa-laptop-code"></i>
+                            <h4>Technologie</h4>
+                            <p>Informatique, Programmation, Compétences numériques</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- English Subjects -->
+                <div class="language-content lang-en" id="subjects-en">
+                    <h2 class="section-title">Academic Subjects</h2>
+                    <p style="text-align: center; margin-bottom: 40px; font-size: 1.1rem; color: var(--gray);">We offer comprehensive lessons in all core subjects for all educational levels.</p>
+                    
+                    <div class="subjects-grid">
+                        <div class="subject-card">
+                            <i class="fas fa-calculator"></i>
+                            <h4>Mathematics</h4>
+                            <p>From basic arithmetic to advanced calculus</p>
+                        </div>
+                        <div class="subject-card">
+                            <i class="fas fa-flask"></i>
+                            <h4>Sciences</h4>
+                            <p>Physics, Chemistry, Biology, Earth Sciences</p>
+                        </div>
+                        <div class="subject-card">
+                            <i class="fas fa-language"></i>
+                            <h4>Languages</h4>
+                            <p>Arabic, French, English, Spanish, German</p>
+                        </div>
+                        <div class="subject-card">
+                            <i class="fas fa-laptop-code"></i>
+                            <h4>Technology</h4>
+                            <p>Computer Science, Programming, Digital Skills</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <div class="container">
+                <!-- Arabic Contact -->
+                <div class="language-content active lang-ar" id="contact-ar">
+                    <h2 class="section-title">تواصل معنا</h2>
+                    <p style="text-align: center; margin-bottom: 40px; font-size: 1.1rem; color: var(--gray);">نحن هنا للإجابة على جميع استفساراتك ومساعدتك في رحلة تعليمك.</p>
+                    
+                    <div class="contact-grid">
+                        <div class="contact-card">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <h3>العنوان</h3>
+                            <p>حي السعادة قرب مسجد الحكمة ومدرسة عبد المومن الموحدي</p>
+                            <p>الجديدة، المغرب 24000</p>
+                        </div>
+                        <div class="contact-card">
+                            <i class="fas fa-phone-alt"></i>
+                            <h3>الهاتف / واتساب</h3>
+                            <a href="tel:+212715750428">+212 715-750428</a>
+                            <p>متاح 24/7 للاستفسارات</p>
+                        </div>
+                        <div class="contact-card">
+                            <i class="fas fa-envelope"></i>
+                            <h3>البريد الإلكتروني</h3>
+                            <a href="mailto:academymira8@gmail.com">academymira8@gmail.com</a>
+                            <p>رد سريع مضمون</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- French Contact -->
+                <div class="language-content lang-fr" id="contact-fr">
+                    <h2 class="section-title">Contactez-nous</h2>
+                    <p style="text-align: center; margin-bottom: 40px; font-size: 1.1rem; color: var(--gray);">Nous sommes là pour répondre à toutes vos questions et vous accompagner dans votre parcours éducatif.</p>
+                    
+                    <div class="contact-grid">
+                        <div class="contact-card">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <h3>Adresse</h3>
+                            <p>Quartier Saada, près de la Mosquée Al Hikma et de l'école Abdelmoumen Al Mwahidi</p>
+                            <p>El Jadida, Maroc 24000</p>
+                        </div>
+                        <div class="contact-card">
+                            <i class="fas fa-phone-alt"></i>
+                            <h3>Téléphone / WhatsApp</h3>
+                            <a href="tel:+212715750428">+212 715-750428</a>
+                            <p>Disponible 24h/24 pour les demandes</p>
+                        </div>
+                        <div class="contact-card">
+                            <i class="fas fa-envelope"></i>
+                            <h3>Email</h3>
+                            <a href="mailto:academymira8@gmail.com">academymira8@gmail.com</a>
+                            <p>Réponse rapide garantie</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- English Contact -->
+                <div class="language-content lang-en" id="contact-en">
+                    <h2 class="section-title">Contact Us</h2>
+                    <p style="text-align: center; margin-bottom: 40px; font-size: 1.1rem; color: var(--gray);">We're here to answer all your inquiries and support your educational journey.</p>
+                    
+                    <div class="contact-grid">
+                        <div class="contact-card">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <h3>Address</h3>
+                            <p>Saada neighborhood, near Al Hikma Mosque and Abdelmoumen Al Mwahidi School</p>
+                            <p>El Jadida, Morocco 24000</p>
+                        </div>
+                        <div class="contact-card">
+                            <i class="fas fa-phone-alt"></i>
+                            <h3>Phone / WhatsApp</h3>
+                            <a href="tel:+212715750428">+212 715-750428</a>
+                            <p>Available 24/7 for inquiries</p>
+                        </div>
+                        <div class="contact-card">
+                            <i class="fas fa-envelope"></i>
+                            <h3>Email</h3>
+                            <a href="mailto:academymira8@gmail.com">academymira8@gmail.com</a>
+                            <p>Guaranteed quick response</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <!-- Arabic Footer -->
+                <div class="language-content active lang-ar" id="footer-ar">
+                    <div class="footer-column">
+                        <h3>أكاديمية ميرا</h3>
+                        <p>مؤسسة تعليمية ملتزمة بتمكين الطلاب في الجديدة والمغرب من خلال تعليم عالي الجودة ودعم مخصص.</p>
+                        <div class="social-icons">
+                            <a href="https://www.facebook.com/miraacademia" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-column">
+                        <h3>روابط سريعة</h3>
+                        <ul class="footer-links">
+                            <li><a href="#home">الرئيسية</a></li>
+                            <li><a href="#about">من نحن</a></li>
+                            <li><a href="#gallery">المعرض</a></li>
+                            <li><a href="#subjects">المواد</a></li>
+                            <li><a href="#contact">اتصل بنا</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>ساعات العمل</h3>
+                        <p>مفتوح 24 ساعة</p>
+                        <p>جميع أيام الأسبوع</p>
+                        <p>حجز المواعيد متاح</p>
+                    </div>
+                </div>
+                <!-- French Footer -->
+                <div class="language-content lang-fr" id="footer-fr">
+                    <div class="footer-column">
+                        <h3>Mira Academy</h3>
+                        <p>Institution éducative engagée à autonomiser les étudiants à El Jadida et au Maroc grâce à un enseignement de qualité et un soutien personnalisé.</p>
+                        <div class="social-icons">
+                            <a href="https://www.facebook.com/miraacademia" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Liens rapides</h3>
+                        <ul class="footer-links">
+                            <li><a href="#home">Accueil</a></li>
+                            <li><a href="#about">À propos</a></li>
+                            <li><a href="#gallery">Galerie</a></li>
+                            <li><a href="#subjects">Matières</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Heures d'ouverture</h3>
+                        <p>Ouvert 24h/24</p>
+                        <p>Tous les jours de la semaine</p>
+                        <p>Réservations disponibles</p>
+                    </div>
+                </div>
+                <!-- English Footer -->
+                <div class="language-content lang-en" id="footer-en">
+                    <div class="footer-column">
+                        <h3>Mira Academy</h3>
+                        <p>Educational institution committed to empowering students in El Jadida and Morocco through quality education and personalized support.</p>
+                        <div class="social-icons">
+                            <a href="https://www.facebook.com/miraacademia" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Quick Links</h3>
+                        <ul class="footer-links">
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#about">About</a></li>
+                            <li><a href="#gallery">Gallery</a></li>
+                            <li><a href="#subjects">Subjects</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Operating Hours</h3>
+                        <p>Open 24 hours</p>
+                        <p>All weekdays</p>
+                        <p>Appointments available</p>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Mira Academy - El Jadida, Morocco. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Language Switching
+            const langButtons = document.querySelectorAll('.lang-btn');
+            const allLangContents = document.querySelectorAll('.language-content');
+            
+            langButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const selectedLang = this.getAttribute('data-lang');
+                    
+                    // Update active button
+                    langButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Show selected language content
+                    allLangContents.forEach(content => {
+                        content.classList.remove('active');
+                        if (content.id.includes(selectedLang)) {
+                            content.classList.add('active');
+                        }
+                    });
+                    
+                    // Update navigation text based on language
+                    updateNavigationText(selectedLang);
+                });
+            });
+            
+            function updateNavigationText(lang) {
+                const navLinks = document.querySelectorAll('#mainNav a');
+                
+                if (lang === 'ar') {
+                    navLinks[0].textContent = 'الرئيسية';
+                    navLinks[1].textContent = 'من نحن';
+                    navLinks[2].textContent = 'المعرض';
+                    navLinks[3].textContent = 'المواد';
+                    navLinks[4].textContent = 'اتصل بنا';
+                } else if (lang === 'fr') {
+                    navLinks[0].textContent = 'Accueil';
+                    navLinks[1].textContent = 'À propos';
+                    navLinks[2].textContent = 'Galerie';
+                    navLinks[3].textContent = 'Matières';
+                    navLinks[4].textContent = 'Contact';
+                } else {
+                    navLinks[0].textContent = 'Home';
+                    navLinks[1].textContent = 'About';
+                    navLinks[2].textContent = 'Gallery';
+                    navLinks[3].textContent = 'Subjects';
+                    navLinks[4].textContent = 'Contact';
+                }
+            }
+            
+            // Mobile Menu Toggle
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mainNav = document.getElementById('mainNav');
+            
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    mainNav.classList.toggle('active');
+                    this.querySelector('i').classList.toggle('fa-bars');
+                    this.querySelector('i').classList.toggle('fa-times');
+                });
+                
+                // Close mobile menu when clicking a link
+                document.querySelectorAll('#mainNav a').forEach(link => {
+                    link.addEventListener('click', function() {
+                        mainNav.classList.remove('active');
+                        mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+                        mobileMenuBtn.querySelector('i').classList.remove('fa-times');
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>
